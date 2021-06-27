@@ -23,7 +23,7 @@ class QuizViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.rowHeight = 134
+        tableView.rowHeight = 168
     }
     
     @IBSegueAction func toResultsSegue(_ coder: NSCoder) -> ResultsViewController? {
@@ -35,7 +35,6 @@ class QuizViewController: UIViewController {
 }
 
 extension QuizViewController: UITableViewDelegate {
-    
 }
 
 extension QuizViewController: UITableViewDataSource {
@@ -46,15 +45,11 @@ extension QuizViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? QuestionTableViewCell {
-            cell.qLabel?.text = questions[indexPath.row].question
+            let q = questions[indexPath.row]
+            cell.configure(with: q)
             return cell
         } else {
             return UITableViewCell()
         }
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        questions[indexPath.section].userAnswer = questions[indexPath.section].answers[indexPath.row]
-//    tableView.deselectRow(at: indexPath, animated: true)
-//    }
 }

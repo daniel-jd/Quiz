@@ -14,9 +14,9 @@ class QuestionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var qLabel: UILabel!
-    @IBOutlet weak var answerButton: UIButton!
     
-
+    var answers: [String] = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,41 +25,45 @@ class QuestionTableViewCell: UITableViewCell {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = 32
     }
-
+    
+    func configure(with question: Question) {
+        qLabel.text = question.question
+        answers = question.answers
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    @IBAction func answerButtonPressed(_ sender: Any) {
-        answerButton.backgroundColor = .systemOrange
-        // Set user answer
-        // Change BG color?
-    }
 }
 
 // MARK: TableView Delegate & DataSource
 
 extension QuestionTableViewCell: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? QTableViewCell {
+            
+            let userAnswer = cell.answerLabel.text
+            print(userAnswer!)
+           
+        }
+    }
 }
 
 extension QuestionTableViewCell: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return answers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? QTableViewCell {
-        
-            cell.answerLabel.text = questions[indexPath.section].answers[indexPath.row]
+            cell.answerLabel.text = answers[indexPath.row]
             return cell
         } else {
             return UITableViewCell()

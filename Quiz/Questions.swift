@@ -9,28 +9,22 @@ import UIKit
 
 struct Question {
     let question: String
-    var answers: [String] {
-        return [v1, v2, v3, v4]
-    }
-    let v1: String
-    let v2: String
-    let v3: String
-    let v4: String
+    var answers: [String]
     let rightAnswer: String
     var userAnswer: String?
 }
 
-let question1 = Question(question: "Какого цвета небо?",
-                         v1: "Красное", v2: "Голубое", v3: "Желтое", v4: "Черное",
+private let question1 = Question(question: "Какого цвета небо?",
+                         answers: ["Красное", "Голубое", "Желтое", "Черное"],
                          rightAnswer: "Голубое")
-let question2 = Question(question: "Кто был напарником Лисы Алисы?",
-                         v1: "Буратино", v2: "Папа Карло", v3: "Кот Базилио", v4: "Дуримар",
+private let question2 = Question(question: "Кто был напарником Лисы Алисы?",
+                         answers: ["Буратино", "Папа Карло", "Кот Базилио", "Дуримар"],
                          rightAnswer: "Кот Базилио")
-let question3 = Question(question: "Что находится напротив Севера?",
-                         v1: "Юг", v2: "Запад", v3: "Восток", v4: "Ничего",
+private let question3 = Question(question: "Что находится напротив Севера?",
+                         answers: ["Юг", "Запад", "Восток", "Ничего"],
                          rightAnswer: "Юг")
-let question4 = Question(question: "Кто не работает - тот не ... ?",
-                         v1: "Спит", v2: "Пьёт", v3: "Ест", v4: "Думает",
+private let question4 = Question(question: "Кто не работает - тот не ... ?",
+                         answers: ["Спит", "Пьёт", "Ест", "Думает"],
                          rightAnswer: "Ест")
 
 var questions = [question1, question2, question3, question4]
