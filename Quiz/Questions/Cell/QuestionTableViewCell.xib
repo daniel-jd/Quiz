@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="QuizCell" rowHeight="282" id="KGk-i7-Jjw" customClass="QuestionTableViewCell" customModule="Quiz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qyX-5s-qan">
+                        <rect key="frame" x="0.0" y="50" width="320" height="232"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </tableView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVv-r3-Cpd">
+                        <rect key="frame" x="20" y="0.0" width="300" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="RNa-76-bn8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="qyX-5s-qan" secondAttribute="trailing" id="Abt-lF-PL4"/>
+                    <constraint firstAttribute="bottom" secondItem="qyX-5s-qan" secondAttribute="bottom" id="HXp-kQ-nlT"/>
+                    <constraint firstItem="tVv-r3-Cpd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Hi6-tT-Rvc"/>
+                    <constraint firstItem="tVv-r3-Cpd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KDh-eE-qTR"/>
+                    <constraint firstItem="qyX-5s-qan" firstAttribute="top" secondItem="tVv-r3-Cpd" secondAttribute="bottom" id="ixf-O3-aWN"/>
+                    <constraint firstAttribute="trailing" secondItem="tVv-r3-Cpd" secondAttribute="trailing" id="oxd-CD-egw"/>
+                    <constraint firstItem="qyX-5s-qan" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zI3-Qo-Xn2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="qLabel" destination="tVv-r3-Cpd" id="02S-BV-teq"/>
+                <outlet property="tableView" destination="qyX-5s-qan" id="ROu-wS-46e"/>
+            </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="200.22321428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A52050482688780000ECD0E1 /* QTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52050462688780000ECD0E1 /* QTableViewCell.swift */; };
+		A52050492688780000ECD0E1 /* QTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52050472688780000ECD0E1 /* QTableViewCell.xib */; };
+		A5C60A872688623500E7FCFC /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C60A852688623500E7FCFC /* QuestionTableViewCell.swift */; };
+		A5C60A882688623500E7FCFC /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C60A862688623500E7FCFC /* QuestionTableViewCell.xib */; };
 		A5E18DEF2686EEA4005D5E18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E18DEE2686EEA4005D5E18 /* AppDelegate.swift */; };
 		A5E18DF12686EEA4005D5E18 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E18DF02686EEA4005D5E18 /* SceneDelegate.swift */; };
 		A5E18DF32686EEA4005D5E18 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E18DF22686EEA4005D5E18 /* QuizViewController.swift */; };
@@ -18,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A52050462688780000ECD0E1 /* QTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTableViewCell.swift; sourceTree = "<group>"; };
+		A52050472688780000ECD0E1 /* QTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QTableViewCell.xib; sourceTree = "<group>"; };
+		A5C60A852688623500E7FCFC /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		A5C60A862688623500E7FCFC /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
 		A5E18DEB2686EEA4005D5E18 /* Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5E18DEE2686EEA4005D5E18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5E18DF02686EEA4005D5E18 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +49,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A520504B2688780500ECD0E1 /* QCell */ = {
+			isa = PBXGroup;
+			children = (
+				A52050462688780000ECD0E1 /* QTableViewCell.swift */,
+				A52050472688780000ECD0E1 /* QTableViewCell.xib */,
+			);
+			path = QCell;
+			sourceTree = "<group>";
+		};
+		A5C60A8A2688624000E7FCFC /* Questions */ = {
+			isa = PBXGroup;
+			children = (
+				A5E18DF22686EEA4005D5E18 /* QuizViewController.swift */,
+				A5C60A8D2688625600E7FCFC /* Cell */,
+			);
+			path = Questions;
+			sourceTree = "<group>";
+		};
+		A5C60A8C2688624D00E7FCFC /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				A5E18E082686F333005D5E18 /* ResultsViewController.swift */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
+		A5C60A8D2688625600E7FCFC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A5C60A852688623500E7FCFC /* QuestionTableViewCell.swift */,
+				A5C60A862688623500E7FCFC /* QuestionTableViewCell.xib */,
+				A520504B2688780500ECD0E1 /* QCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		A5E18DE22686EEA4005D5E18 = {
 			isa = PBXGroup;
 			children = (
@@ -63,8 +107,8 @@
 				A5E18DEE2686EEA4005D5E18 /* AppDelegate.swift */,
 				A5E18DF02686EEA4005D5E18 /* SceneDelegate.swift */,
 				A5E18E042686EF57005D5E18 /* Questions.swift */,
-				A5E18DF22686EEA4005D5E18 /* QuizViewController.swift */,
-				A5E18E082686F333005D5E18 /* ResultsViewController.swift */,
+				A5C60A8A2688624000E7FCFC /* Questions */,
+				A5C60A8C2688624D00E7FCFC /* Results */,
 				A5E18DF42686EEA4005D5E18 /* Main.storyboard */,
 				A5E18DF72686EEA7005D5E18 /* Assets.xcassets */,
 				A5E18DF92686EEA7005D5E18 /* LaunchScreen.storyboard */,
@@ -131,6 +175,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E18DFB2686EEA7005D5E18 /* LaunchScreen.storyboard in Resources */,
+				A52050492688780000ECD0E1 /* QTableViewCell.xib in Resources */,
+				A5C60A882688623500E7FCFC /* QuestionTableViewCell.xib in Resources */,
 				A5E18DF82686EEA7005D5E18 /* Assets.xcassets in Resources */,
 				A5E18DF62686EEA4005D5E18 /* Main.storyboard in Resources */,
 			);
@@ -146,6 +192,8 @@
 				A5E18DF32686EEA4005D5E18 /* QuizViewController.swift in Sources */,
 				A5E18E052686EF57005D5E18 /* Questions.swift in Sources */,
 				A5E18DEF2686EEA4005D5E18 /* AppDelegate.swift in Sources */,
+				A5C60A872688623500E7FCFC /* QuestionTableViewCell.swift in Sources */,
+				A52050482688780000ECD0E1 /* QTableViewCell.swift in Sources */,
 				A5E18E092686F333005D5E18 /* ResultsViewController.swift in Sources */,
 				A5E18DF12686EEA4005D5E18 /* SceneDelegate.swift in Sources */,
 			);
