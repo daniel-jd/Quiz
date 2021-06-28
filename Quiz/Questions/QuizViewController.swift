@@ -9,6 +9,7 @@ import UIKit
 
 class QuizViewController: UIViewController {
     
+    private let resultsVCIdn = "ResultsViewController"
     private let cellID = "QuizCell"
     private let cellNibName = "QuestionTableViewCell"
     
@@ -27,11 +28,16 @@ class QuizViewController: UIViewController {
         tableView.rowHeight = 168
     }
     
-    @IBSegueAction func toResultsSegue(_ coder: NSCoder) -> ResultsViewController? {
-        // pass questions and user answers
-        
-        return ResultsViewController(coder: coder)
+    @IBAction func showResultsPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: resultsVCIdn) as? ResultsViewController else {
+            return
+        }
+        vc.questions = questions
+        vc.userAnswers = userAnswers
+        navigationController?.pushViewController(vc, animated: true)
     }
+    
     
 }
 
@@ -48,8 +54,10 @@ extension QuizViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? QuestionTableViewCell {
             let q = questions[indexPath.row]
             let selectedAnswer = userAnswers[q.question]
-            cell.configure(with: q, selectedAnswer: selectedAnswer)
+            // Set table for Quiz
+            cell.configureQuiz(with: q, selectedAnswer: selectedAnswer, mode: .editing)
             cell.closure = { [weak self] index in
+                // Store user's answer to dictionary
                 self?.userAnswers[q.question] = index
             }
             return cell

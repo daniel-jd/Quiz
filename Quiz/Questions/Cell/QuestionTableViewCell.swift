@@ -22,6 +22,7 @@ class QuestionTableViewCell: UITableViewCell {
     
     var question: Question?
     var answers: [String] = []
+    var userAnswers: [String : Int] = [:]
     var closure: ((Int) -> Void)?
     var selectedIndex: Int?
     var mode: CellMode = .editing
@@ -37,34 +38,40 @@ class QuestionTableViewCell: UITableViewCell {
         tableView.rowHeight = 32
     }
     
-    func configure(with question: Question, selectedAnswer: Int?, mode: CellMode) {
+    func configureQuiz(with question: Question, selectedAnswer: Int?, mode: CellMode) {
         self.mode = mode
         qLabel.text = question.question
         selectedIndex = selectedAnswer
-        answers = question.answers
+        self.answers = question.answers
         self.question = question
         tableView.reloadData()
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-        
+    func configureResults(with question: Question, userAnswers: [String : Int], mode: CellMode) {
+        self.mode = mode
+        qLabel.text = question.question
+        self.userAnswers = userAnswers
+        self.answers = question.answers
+        self.question = question
+        tableView.reloadData()
     }
     
 }
 
 // MARK: TableView Delegate & DataSource
 
+extension UITableView {
+    func deselectAllRows(animated: Bool) {
+        guard let selectedRows = indexPathsForSelectedRows else { return }
+        for indexPath in selectedRows { deselectRow(at: indexPath, animated: animated) }
+    }
+}
+
 extension QuestionTableViewCell: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? QTableViewCell {
-            let userAnswer = cell.answerLabel.text
-            print(userAnswer!)
-            closure?(indexPath.row)
-        }
+        // Pass user selected answer index to QuizViewController
+        closure?(indexPath.row)
     }
 }
 
@@ -75,11 +82,14 @@ extension QuestionTableViewCell: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? QTableViewCell {
+        
             cell.answerLabel.text = answers[indexPath.row]
             
             switch mode {
             case .editing:
+                tableView.deselectAllRows(animated: true)
                 // TODO: винести в окремий метод!!!
                 if let selectedIndex = selectedIndex,
                    selectedIndex == indexPath.row {
@@ -88,15 +98,16 @@ extension QuestionTableViewCell: UITableViewDataSource {
                 } else {
                     cell.backgroundColor = .white
                 }
-                cell.answerLabel.textColor = .darkGray
+            
             case .results:
                 cell.selectionStyle = .none
-                if indexPath.row == question?.rightAnswer {
-                    cell.answerLabel.textColor = .green
+                // Color user answers with Red
+                if indexPath.row == userAnswers[question!.question] {
+                    cell.backgroundColor = .systemRed
                 }
-                // TODO: Перевірка чи є вибрана відповідь правильною
-                if indexPath.row == selectedIndex {
-                    cell.answerLabel.textColor = .systemPink
+                // Color right answers with Green
+                if indexPath.row == question?.rightAnswer {
+                    cell.backgroundColor = .systemGreen
                 }
             }
             
