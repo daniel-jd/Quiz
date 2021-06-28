@@ -28,6 +28,17 @@ class QuizViewController: UIViewController {
         tableView.rowHeight = 168
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        userAnswers = [:]
+        tableView.reloadData()
+    }
+    
+    func reset() {
+        userAnswers = [:]
+    }
+    
     @IBAction func showResultsPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: resultsVCIdn) as? ResultsViewController else {
@@ -36,6 +47,7 @@ class QuizViewController: UIViewController {
         vc.questions = questions
         vc.userAnswers = userAnswers
         navigationController?.pushViewController(vc, animated: true)
+        userAnswers = [:]
     }
     
     

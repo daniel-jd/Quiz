@@ -32,11 +32,6 @@ class ResultsViewController: UIViewController {
     @IBAction func tryAgainPressed(_ sender: Any) {
         // TODO: Reset userAnswers
         userAnswers = [:]
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: quizVCIdn) as? QuizViewController else {
-            return
-        }
-        vc.userAnswers = [:]
         navigationController?.popViewController(animated: true)
     }
     

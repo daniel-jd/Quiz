@@ -63,7 +63,9 @@ class QuestionTableViewCell: UITableViewCell {
 extension UITableView {
     func deselectAllRows(animated: Bool) {
         guard let selectedRows = indexPathsForSelectedRows else { return }
-        for indexPath in selectedRows { deselectRow(at: indexPath, animated: animated) }
+        for indexPath in selectedRows {
+            deselectRow(at: indexPath, animated: animated)
+        }
     }
 }
 
@@ -84,12 +86,10 @@ extension QuestionTableViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? QTableViewCell {
-        
             cell.answerLabel.text = answers[indexPath.row]
             
             switch mode {
             case .editing:
-                tableView.deselectAllRows(animated: true)
                 // TODO: винести в окремий метод!!!
                 if let selectedIndex = selectedIndex,
                    selectedIndex == indexPath.row {
