@@ -14,9 +14,10 @@ class QuizViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var userAnswers: [String : Int] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         tableView.register(UINib(nibName: cellNibName, bundle: nil), forCellReuseIdentifier: cellID)
         
@@ -46,7 +47,11 @@ extension QuizViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? QuestionTableViewCell {
             let q = questions[indexPath.row]
-            cell.configure(with: q)
+            let selectedAnswer = userAnswers[q.question]
+            cell.configure(with: q, selectedAnswer: selectedAnswer)
+            cell.closure = { [weak self] index in
+                self?.userAnswers[q.question] = index
+            }
             return cell
         } else {
             return UITableViewCell()
